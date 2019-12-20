@@ -1,0 +1,166 @@
+/*
+    FILE: /~sgiorlan/css/hw9stylesheet.css
+    91.61 GUI Programming I Assignment No.9: Implementing a Bit of Scrabble with Drag-and-Drop
+    Scott T. Giorlando, UMass Lowell Computer Science, scott_giorlando@student.uml.edu
+    File Created on: 12/10/2019 6:30 PM.
+        Updated by STG on 12/19/2019 1:08 PM
+
+    File Description: This file is all the style used on my webpage, so the board, the background, the text and the tiles come from this file.
+
+    Note: I had to modify the tile holder's padding because one of the tiles was half on the end of the holder.  I was also running into an issue with the buttons so I had to
+    make the margins smaller on the tile holder and the buttons so it would sit nicely at the bottom of the screen.
+
+    This file did pass all the validators that need to be used.
+*/
+html {
+    display: table;
+    margin: auto;
+}
+
+#header {
+    display: inline-block;
+    width: 850px;
+    text-align: center;
+    margin: auto;
+    color: black;
+    font-family: 'Verdana', Verdana, sans-serif;
+    padding: 20px;
+    font-size: 50px;
+}
+
+body {
+    font-family: 'Verdana', Helvetica, sans-serif;
+    width: 850px;
+    display: inline-block;
+    background-color: #AAEFBA;
+}
+
+
+#info {
+    border-width: 2px;
+    color: black;
+    border-color: white;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    font-family: 'Verdana', Helvetica, sans-serif;
+    height: 50px;
+    margin-right: 10px;
+    background-color: #5A6653;
+}
+
+#tileCount {
+    text-align: center;
+    float: left;
+    padding: 5px 5px;
+    margin-right: 10px;
+    width: 200px;
+}
+
+#currentScore {
+    float: right;
+    font-size: 30px;
+    text-align: center;
+    margin-right: 10px;
+    padding: 5px 5px;
+    width: 200px;
+}
+
+#currentWord {
+    text-align: center;
+    float: left;
+    padding: 5px 5px;
+    width: 160px;
+}
+
+#currentWord2 {
+    text-align: center;
+    float: left;
+    padding: 5px 5px;
+    width: 185px;
+}
+
+
+.button {
+    font-family: 'Verdana', Helvetica, sans-serif;
+    font-weight: bold;
+    background-color: #5A6653;
+    border: none;
+    color: black;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: bold;
+    font-size: 20px;
+    margin: 5px;
+    width: 130px;
+    height: 100px;
+  }
+
+#board {
+    display: inline-block;
+}
+
+#holder {
+    width: 1000px;
+    height: 75px;
+}
+
+#tile_holder {
+    margin: 5px;
+    width: 500px;
+    height: 100px;
+    padding-left: 25px;
+    background-image: url("../images/scrabble-tile-holder.png");
+    float: right;
+}
+
+.board_tile_img {
+    width: 50px;
+    height: 50px;
+}
+
+.game_tile_holder {
+    margin-top:20px;
+    margin-left:15px;
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+}
+
+.game_tile {
+    width: 50px;
+    height: 50px;
+}
+
+.game_tile_img {
+    width: 50px;
+    height: 50px;
+}
+
+.board_tile {
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    background-image: url("../images/empty_space.jpg");
+}
+
+.double_word {
+    background-image: url("../images/double_word.jpg");
+}
+
+
+.triple_word {
+    background-image: url("../images/triple_word.jpg");
+}
+
+.double_letter {
+    background-image: url("../images/double_letter.jpg");
+}
+
+.triple_letter {
+    background-image: url("../images/triple_letter.jpg");
+}
+
+.double_word_center {
+    background-image: url("../images/double_word_center.jpg");
+}

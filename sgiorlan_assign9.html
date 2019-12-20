@@ -1,0 +1,554 @@
+<!--
+    FILE: /~sgiorlan/sgiorlan_assign9.html
+    91.61 GUI Programming I Assignment No.9: Implementing a Bit of Scrabble with Drag-and-Drop
+    Scott T. Giorlando, UMass Lowell Computer Science, scott_giorlando@student.uml.edu
+    File Created on: 12/10/2019 6:20 PM.
+        Updated by STG on 12/19/2019 2:41 PM
+
+    File Description: This file is a webpage that implements a game of Scrabble or mostly the game of Scrabble for the user to play.
+    I probably wouldn't do the explanation of Scrabble justice so here is how the game is played: http://scrabble.hasbro.com/en-us/rules
+
+    This file did pass all the validators that need to be used.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" content="width=device-width, initial-scale=1.0">
+    <title>A Game of Scrabble</title>
+    <link href="css/hw9stylesheet.css" rel="stylesheet">
+    <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
+    <script src="https://code.jquery.com/ui/jquery-ui-git.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+  </head>
+  <body>
+    <h1 id="header">A Game of Scrabble</h1>
+    <div id="message" title="Oh No!">
+    The word you played wasn't a valid word! It must be two or more characters with no spaces!
+  <!--
+  Lines 36 - 512 are the spaces on the board.  So alot of repititon when it comes to spaces.
+-->
+  </div>
+  <div id="board">
+    <div id="line1">
+      <div id="space1" class="board_tile triple_word" effect="tw">
+      </div>
+      <div id="space2" class="board_tile">
+      </div>
+      <div id="space3" class="board_tile">
+      </div>
+      <div id="space4" class="board_tile double_letter" effect="dl">
+      </div>
+      <div id="space5" class="board_tile">
+      </div>
+      <div id="space6" class="board_tile">
+      </div>
+      <div id="space7" class="board_tile">
+      </div>
+      <div id="space8" class="board_tile triple_word" effect="tw">
+      </div>
+      <div id="space9" class="board_tile">
+      </div>
+      <div id="space10" class="board_tile">
+      </div>
+      <div id="space11" class="board_tile">
+      </div>
+      <div id="space12" class="board_tile double_letter" effect="dl">
+      </div>
+      <div id="space13" class="board_tile">
+      </div>
+      <div id="space14" class="board_tile">
+      </div>
+      <div id="space15" class="board_tile triple_word" effect="tw">
+      </div>
+    </div>
+    <div id="line2">
+      <div id="space1" class="board_tile">
+      </div>
+      <div id="space2" class="board_tile double_word" effect="dw">
+      </div>
+      <div id="space3" class="board_tile">
+      </div>
+      <div id="space4" class="board_tile">
+      </div>
+      <div id="space5" class="board_tile">
+      </div>
+      <div id="space6" class="board_tile triple_letter" effect="tl">
+      </div>
+      <div id="space7" class="board_tile">
+      </div>
+      <div id="space8" class="board_tile">
+      </div>
+      <div id="space9" class="board_tile">
+      </div>
+      <div id="space10" class="board_tile triple_letter" effect="tl">
+      </div>
+      <div id="space11" class="board_tile">
+      </div>
+      <div id="space12" class="board_tile">
+      </div>
+      <div id="space13" class="board_tile">
+      </div>
+      <div id="space14" class="board_tile double_word" effect="dw">
+      </div>
+      <div id="space15" class="board_tile">
+      </div>
+    </div>
+    <div id="line3">
+      <div id="space1" class="board_tile">
+      </div>
+      <div id="space2" class="board_tile">
+      </div>
+      <div id="space3" class="board_tile double_word" effect="dw">
+      </div>
+      <div id="space4" class="board_tile">
+      </div>
+      <div id="space5" class="board_tile">
+      </div>
+      <div id="space6" class="board_tile">
+      </div>
+      <div id="space7" class="board_tile double_letter" effect="dl">
+      </div>
+      <div id="space8" class="board_tile">
+      </div>
+      <div id="space9" class="board_tile double_letter" effect="dl">
+      </div>
+      <div id="space10" class="board_tile">
+      </div>
+      <div id="space11" class="board_tile">
+      </div>
+      <div id="space12" class="board_tile">
+      </div>
+      <div id="space13" class="board_tile double_word" effect="dw">
+      </div>
+      <div id="space14" class="board_tile">
+      </div>
+      <div id="space15" class="board_tile">
+      </div>
+    </div>
+    <div id="line4">
+      <div id="space1" class="board_tile double_letter" effect="dl">
+      </div>
+      <div id="space2" class="board_tile">
+      </div>
+      <div id="space3" class="board_tile">
+      </div>
+      <div id="space4" class="board_tile double_word" effect="dw">
+      </div>
+      <div id="space5" class="board_tile">
+      </div>
+      <div id="space6" class="board_tile">
+      </div>
+      <div id="space7" class="board_tile">
+      </div>
+      <div id="space8" class="board_tile double_letter" effect="dl">
+      </div>
+      <div id="space9" class="board_tile">
+      </div>
+      <div id="space10" class="board_tile">
+      </div>
+      <div id="space11" class="board_tile">
+      </div>
+      <div id="space12" class="board_tile double_word" effect="dw">
+      </div>
+      <div id="space13" class="board_tile">
+      </div>
+      <div id="space14" class="board_tile">
+      </div>
+      <div id="space15" class="board_tile double_letter" effect="dl">
+      </div>
+    </div>
+    <div id="line5">
+      <div id="space1" class="board_tile">
+      </div>
+      <div id="space2" class="board_tile">
+      </div>
+      <div id="space3" class="board_tile">
+      </div>
+      <div id="space4" class="board_tile">
+      </div>
+      <div id="space5" class="board_tile double_word" effect="dw">
+      </div>
+      <div id="space6" class="board_tile">
+      </div>
+      <div id="space7" class="board_tile">
+      </div>
+      <div id="space8" class="board_tile">
+      </div>
+      <div id="space9" class="board_tile">
+      </div>
+      <div id="space10" class="board_tile">
+      </div>
+      <div id="space11" class="board_tile double_word" effect="dw">
+      </div>
+      <div id="space12" class="board_tile">
+      </div>
+      <div id="space13" class="board_tile">
+      </div>
+      <div id="space14" class="board_tile">
+      </div>
+      <div id="space15" class="board_tile">
+      </div>
+    </div>
+    <div id="line6">
+      <div id="space1" class="board_tile">
+      </div>
+      <div id="space2" class="board_tile triple_letter" effect="tl">
+      </div>
+      <div id="space3" class="board_tile">
+      </div>
+      <div id="space4" class="board_tile">
+      </div>
+      <div id="space5" class="board_tile">
+      </div>
+      <div id="space6" class="board_tile triple_letter" effect="tl">
+      </div>
+      <div id="space7" class="board_tile">
+      </div>
+      <div id="space8" class="board_tile">
+      </div>
+      <div id="space9" class="board_tile">
+      </div>
+      <div id="space10" class="board_tile triple_letter" effect="tl">
+      </div>
+      <div id="space11" class="board_tile">
+      </div>
+      <div id="space12" class="board_tile">
+      </div>
+      <div id="space13" class="board_tile">
+      </div>
+      <div id="space14" class="board_tile triple_letter" effect="tl">
+      </div>
+      <div id="space15" class="board_tile">
+      </div>
+    </div>
+    <div id="line7">
+      <div id="space1" class="board_tile">
+      </div>
+      <div id="space2" class="board_tile">
+      </div>
+      <div id="space3" class="board_tile double_letter" effect="dl">
+      </div>
+      <div id="space4" class="board_tile">
+      </div>
+      <div id="space5" class="board_tile">
+      </div>
+      <div id="space6" class="board_tile">
+      </div>
+      <div id="space7" class="board_tile double_letter" effect="dl">
+      </div>
+      <div id="space8" class="board_tile">
+      </div>
+      <div id="space9" class="board_tile double_letter" effect="dl">
+      </div>
+      <div id="space10" class="board_tile">
+      </div>
+      <div id="space11" class="board_tile">
+      </div>
+      <div id="space12" class="board_tile">
+      </div>
+      <div id="space13" class="board_tile double_letter" effect="dl">
+      </div>
+      <div id="space14" class="board_tile">
+      </div>
+      <div id="space15" class="board_tile">
+      </div>
+    </div>
+    <div id="line8">
+      <div id="space1" class="board_tile triple_word" effect="tw">
+      </div>
+      <div id="space2" class="board_tile">
+      </div>
+      <div id="space3" class="board_tile">
+      </div>
+      <div id="space4" class="board_tile double_letter" effect="dl">
+      </div>
+      <div id="space5" class="board_tile">
+      </div>
+      <div id="space6" class="board_tile">
+      </div>
+      <div id="space7" class="board_tile">
+      </div>
+      <div id="space8" class="board_tile double_word_center" effect="dw" center="true">
+      </div>
+      <div id="space9" class="board_tile">
+      </div>
+      <div id="space10" class="board_tile">
+      </div>
+      <div id="space11" class="board_tile">
+      </div>
+      <div id="space12" class="board_tile double_letter" effect="dl">
+      </div>
+      <div id="space13" class="board_tile">
+      </div>
+      <div id="space14" class="board_tile">
+      </div>
+      <div id="space15" class="board_tile triple_word" effect="tw">
+      </div>
+    </div>
+    <div id="line9">
+      <div id="space1" class="board_tile">
+      </div>
+      <div id="space2" class="board_tile">
+      </div>
+      <div id="space3" class="board_tile double_letter" effect="dl">
+      </div>
+      <div id="space4" class="board_tile">
+      </div>
+      <div id="space5" class="board_tile">
+      </div>
+      <div id="space6" class="board_tile">
+      </div>
+      <div id="space7" class="board_tile double_letter" effect="dl">
+      </div>
+      <div id="space8" class="board_tile">
+      </div>
+      <div id="space9" class="board_tile double_letter" effect="dl">
+      </div>
+      <div id="space10" class="board_tile">
+      </div>
+      <div id="space11" class="board_tile">
+      </div>
+      <div id="space12" class="board_tile">
+      </div>
+      <div id="space13" class="board_tile double_letter" effect="dl">
+      </div>
+      <div id="space14" class="board_tile">
+      </div>
+      <div id="space15" class="board_tile">
+      </div>
+    </div>
+    <div id="line10">
+      <div id="space1" class="board_tile">
+      </div>
+      <div id="space2" class="board_tile triple_letter" effect="tl">
+      </div>
+      <div id="space3" class="board_tile">
+      </div>
+      <div id="space4" class="board_tile">
+      </div>
+      <div id="space5" class="board_tile">
+      </div>
+      <div id="space6" class="board_tile triple_letter" effect="tl">
+      </div>
+      <div id="space7" class="board_tile">
+      </div>
+      <div id="space8" class="board_tile">
+      </div>
+      <div id="space9" class="board_tile">
+      </div>
+      <div id="space10" class="board_tile triple_letter" effect="tl">
+      </div>
+      <div id="space11" class="board_tile">
+      </div>
+      <div id="space12" class="board_tile">
+      </div>
+      <div id="space13" class="board_tile">
+      </div>
+      <div id="space14" class="board_tile triple_letter" effect="tl">
+      </div>
+      <div id="space15" class="board_tile">
+      </div>
+    </div>
+    <div id="line11">
+      <div id="space1" class="board_tile">
+      </div>
+      <div id="space2" class="board_tile">
+      </div>
+      <div id="space3" class="board_tile">
+      </div>
+      <div id="space4" class="board_tile">
+      </div>
+      <div id="space5" class="board_tile double_word" effect="dw">
+      </div>
+      <div id="space6" class="board_tile">
+      </div>
+      <div id="space7" class="board_tile">
+      </div>
+      <div id="space8" class="board_tile">
+      </div>
+      <div id="space9" class="board_tile">
+      </div>
+      <div id="space10" class="board_tile">
+      </div>
+      <div id="space11" class="board_tile double_word" effect="dw">
+      </div>
+      <div id="space12" class="board_tile">
+      </div>
+      <div id="space13" class="board_tile">
+      </div>
+      <div id="space14" class="board_tile">
+      </div>
+      <div id="space15" class="board_tile">
+      </div>
+    </div>
+    <div id="line12">
+      <div id="space1" class="board_tile double_letter" effect="dl">
+      </div>
+      <div id="space2" class="board_tile">
+      </div>
+      <div id="space3" class="board_tile">
+      </div>
+      <div id="space4" class="board_tile double_word" effect="dw">
+      </div>
+      <div id="space5" class="board_tile">
+      </div>
+      <div id="space6" class="board_tile">
+      </div>
+      <div id="space7" class="board_tile">
+      </div>
+      <div id="space8" class="board_tile double_letter" effect="dl">
+      </div>
+      <div id="space9" class="board_tile">
+      </div>
+      <div id="space10" class="board_tile">
+      </div>
+      <div id="space11" class="board_tile">
+      </div>
+      <div id="space12" class="board_tile double_word" effect="dw">
+      </div>
+      <div id="space13" class="board_tile">
+      </div>
+      <div id="space14" class="board_tile">
+      </div>
+      <div id="space15" class="board_tile double_letter" effect="dl">
+      </div>
+    </div>
+    <div id="line13">
+      <div id="space1" class="board_tile">
+      </div>
+      <div id="space2" class="board_tile">
+      </div>
+      <div id="space3" class="board_tile double_word" effect="dw">
+      </div>
+      <div id="space4" class="board_tile">
+      </div>
+      <div id="space5" class="board_tile">
+      </div>
+      <div id="space6" class="board_tile">
+      </div>
+      <div id="space7" class="board_tile double_letter" effect="dl">
+      </div>
+      <div id="space8" class="board_tile">
+      </div>
+      <div id="space9" class="board_tile double_letter" effect="dl">
+      </div>
+      <div id="space10" class="board_tile">
+      </div>
+      <div id="space11" class="board_tile">
+      </div>
+      <div id="space12" class="board_tile">
+      </div>
+      <div id="space13" class="board_tile double_word" effect="dw">
+      </div>
+      <div id="space14" class="board_tile">
+      </div>
+      <div id="space15" class="board_tile">
+      </div>
+    </div>
+    <div id="line14">
+      <div id="space1" class="board_tile">
+      </div>
+      <div id="space2" class="board_tile double_word" effect="dw">
+      </div>
+      <div id="space3" class="board_tile">
+      </div>
+      <div id="space4" class="board_tile">
+      </div>
+      <div id="space5" class="board_tile">
+      </div>
+      <div id="space6" class="board_tile triple_letter" effect="tl">
+      </div>
+      <div id="space7" class="board_tile">
+      </div>
+      <div id="space8" class="board_tile">
+      </div>
+      <div id="space9" class="board_tile">
+      </div>
+      <div id="space10" class="board_tile triple_letter" effect="tl">
+      </div>
+      <div id="space11" class="board_tile">
+      </div>
+      <div id="space12" class="board_tile">
+      </div>
+      <div id="space13" class="board_tile">
+      </div>
+      <div id="space14" class="board_tile double_word" effect="dw">
+      </div>
+      <div id="space15" class="board_tile">
+      </div>
+    </div>
+    <div id="line15" class="board_line">
+      <div id="space1" class="board_tile triple_word" effect="tw">
+      </div>
+      <div id="space2" class="board_tile">
+      </div>
+      <div id="space3" class="board_tile">
+      </div>
+      <div id="space4" class="board_tile double_letter" effect="dl">
+      </div>
+      <div id="space5" class="board_tile">
+      </div>
+      <div id="space6" class="board_tile">
+      </div>
+      <div id="space7" class="board_tile">
+      </div>
+      <div id="space8" class="board_tile triple_word" effect="tw">
+      </div>
+      <div id="space9" class="board_tile">
+      </div>
+      <div id="space10" class="board_tile">
+      </div>
+      <div id="space11" class="board_tile">
+      </div>
+      <div id="space12" class="board_tile double_letter" effect="dl">
+      </div>
+      <div id="space13" class="board_tile">
+      </div>
+      <div id="space14" class="board_tile">
+      </div>
+      <div id="space15" class="board_tile triple_word" effect="tw">
+    </div>
+  </div>
+  <!--
+  Info block with all the various outputs
+-->
+  <div id = "info">
+    <div id="tileCount">
+    </div>
+    <div id="currentScore">
+      Score: 0
+    </div>
+    <div id="currentWord">
+      Word: N/a
+    </div>
+    <div id="currentWord2">
+      Word Score: 0
+    </div>
+  </div>
+    <!--
+    Letter holder
+  -->
+    <div id="tile_holder">
+      <div id="tile1" class="game_tile_holder"></div>
+      <div id="tile2" class="game_tile_holder"></div>
+      <div id="tile3" class="game_tile_holder"></div>
+      <div id="tile4" class="game_tile_holder"></div>
+      <div id="tile5" class="game_tile_holder"></div>
+      <div id="tile6" class="game_tile_holder"></div>
+      <div id="tile7" class="game_tile_holder"></div>
+    </div>
+    <!--
+    Buttons for user to refesh their letters and to submit their word for points.
+    !-->
+    <button class="button" id="generate">
+      Refresh Your Letters
+    </button>
+    <button class="button" id="save">
+      Submit Current Word
+    </button>
+   <script src="js/hw9.js"></script>
+  </body>
+</html>
